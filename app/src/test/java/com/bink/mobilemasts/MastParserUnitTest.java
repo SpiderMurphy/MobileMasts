@@ -34,7 +34,7 @@ public class MastParserUnitTest {
     }
 
     @Test
-    public void test_csv_load_ordered_list_ascending(){
+    public void test_csv_load_ordered_list_ascending (){
         List<Mast> mastList = MastParser.readFromCsv(new StringReader(mCsvBuffer),
                 ((mast, t1) -> mast.getLeaseYears() > t1.getLeaseYears() ? 1 : (mast.getLeaseYears() < t1.getLeaseYears() ? -1 : 0)));
 
@@ -42,7 +42,7 @@ public class MastParserUnitTest {
     }
 
     @Test
-    public void test_csv_load_ordered_list_descending(){
+    public void test_csv_load_ordered_list_descending (){
         List<Mast> mastList = MastParser.readFromCsv(new StringReader(mCsvBuffer),
                 ((mast, t1) -> mast.getLeaseYears() > t1.getLeaseYears() ? -1 : (mast.getLeaseYears() < t1.getLeaseYears() ? 1 : 0)));
 

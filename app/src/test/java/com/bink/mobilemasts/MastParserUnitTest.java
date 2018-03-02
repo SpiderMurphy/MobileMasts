@@ -1,10 +1,12 @@
 package com.bink.mobilemasts;
 
 import com.bink.mobilemasts.models.Mast;
+import com.bink.mobilemasts.utils.MastParser;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.StringReader;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -27,19 +29,23 @@ public class MastParserUnitTest {
 
     @Test
     public void test_csv_load_unordered_list (){
-        List<Mast> mastList = null;
+        List<Mast> mastList = MastParser.readFromCsv(new StringReader(mCsvBuffer), null);
         assertEquals(mastList.size(), 3);
     }
 
     @Test
     public void test_csv_load_ordered_list_ascending(){
-        List<Mast> mastList = null;
+        List<Mast> mastList = MastParser.readFromCsv(new StringReader(mCsvBuffer),
+                ((mast, t1) -> mast.getLeaseYears() > t1.getLeaseYears() ? 1 : (mast.getLeaseYears() < t1.getLeaseYears() ? -1 : 0)));
+
         assertEquals(mastList.get(0).getPropertyName(), "Potternewton Crescent");
     }
 
     @Test
     public void test_csv_load_ordered_list_descending(){
-        List<Mast> mastList = null;
+        List<Mast> mastList = MastParser.readFromCsv(new StringReader(mCsvBuffer),
+                ((mast, t1) -> mast.getLeaseYears() > t1.getLeaseYears() ? -1 : (mast.getLeaseYears() < t1.getLeaseYears() ? 1 : 0)));
+
         assertEquals(mastList.get(0).getPropertyName(), "Beecroft Hill");
     }
 }

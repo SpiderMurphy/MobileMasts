@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 import com.bink.mobilemasts.adapters.AdapterListItem;
 import com.bink.mobilemasts.adapters.AdapterViewPager;
@@ -58,11 +59,41 @@ public class MainActivity extends AppCompatActivity {
         View headerView = view.findViewById(R.id.header_view);
         headerView.setVisibility(View.VISIBLE);
 
+        // Sort button
+        Button button = view.findViewById(R.id.btn_sort);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         recyclerView.addItemDecoration(new DividerItemDecoration(MainActivity.this,
                 DividerItemDecoration.VERTICAL));
 
         final ItemPresenter presenter = new ItemPresenter();
+
+        button.setOnClickListener(view1 -> {
+            if(view1.getTag().equals("desc")){
+                presenter.sort(((item, t1) -> {
+                    Integer val1 = (Integer) item.getItem();
+                    Integer val2 = (Integer) t1.getItem();
+
+                    return val1 > val2 ? 1 : (val1 < val2 ? -1 : 0);
+                }));
+
+                view1.setTag("asc");
+                button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_upward_black_24dp, 0, 0, 0);
+            }
+            else{
+                presenter.sort(((item, t1) -> {
+                    Integer val1 = (Integer) item.getItem();
+                    Integer val2 = (Integer) t1.getItem();
+
+                    return val1 > val2 ? -1 : (val1 < val2 ? 1 : 0);
+                }));
+
+                view1.setTag("desc");
+                button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_downward_black_24dp, 0, 0, 0);
+            }
+
+            recyclerView.getAdapter().notifyDataSetChanged();
+        });
 
         try {
             List<Mast> mastList = MastParser.readFromCsv(new InputStreamReader(getAssets().open("masts.csv")),
@@ -72,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 if(presenter.getCount() == 5)
                     break;
 
-                presenter.add(new ListItem<>(mast.getPropertyName(), String.valueOf(mast.getLeaseYears() + "\t years"), Integer.valueOf(mast.getLeaseYears())));
+                presenter.add(new ListItem<>(mast.getPropertyName(), String.valueOf(mast.getLeaseYears() + "\t years"), mast.getLeaseYears()));
             }
         } catch (IOException e) {
             e.printStackTrace();

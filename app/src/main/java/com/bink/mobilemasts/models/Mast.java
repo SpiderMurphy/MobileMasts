@@ -13,10 +13,19 @@ public class Mast {
     private String mPropertyAddress3;
     private String mPropertyAddress4;
     private String mUnitName;
+    private String mTenantName;
     private Date mLeaseStartDate;
     private Date mLeaseEndDate;
     private int mLeaseYears;
     private double mCurrentRent;
+
+    public String getTenantName() {
+        return mTenantName;
+    }
+
+    public void setTenantName(String mTenantName) {
+        this.mTenantName = mTenantName;
+    }
 
     public String getPropertyName() {
         return mPropertyName;

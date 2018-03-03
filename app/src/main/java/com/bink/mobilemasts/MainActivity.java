@@ -21,8 +21,10 @@ import com.bink.mobilemasts.utils.MastParser;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -99,12 +101,18 @@ public class MainActivity extends AppCompatActivity {
             List<Mast> mastList = MastParser.readFromCsv(new InputStreamReader(getAssets().open("masts.csv")),
                     ((mast, t1) -> mast.getLeaseYears() > t1.getLeaseYears() ? -1 : (mast.getLeaseYears() < t1.getLeaseYears() ? 1 : 0)));
 
+            Double total = 0.0;
+            NumberFormat currency = NumberFormat.getCurrencyInstance();
+
             for(Mast mast : mastList){
                 if(presenter.getCount() == 5)
                     break;
 
                 presenter.add(new ListItem<>(mast.getPropertyName(), String.valueOf(mast.getLeaseYears() + "\t years"), mast.getLeaseYears()));
+                total += mast.getCurrentRent();
             }
+
+            presenter.add(new ListItem<>(currency.format(total), "total rent", total));
         } catch (IOException e) {
             e.printStackTrace();
         }

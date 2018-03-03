@@ -64,6 +64,11 @@ public class AdapterViewPager extends PagerAdapter {
         container.removeView((View) object);
     }
 
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mContext.get().getString(mPageModels.get(position).getTitleId());
+    }
+
     /**
      * Setups inflated view
      */

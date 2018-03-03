@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
                 total += mast.getCurrentRent();
             }
 
-            presenter.add(new ListItem<>(currency.format(total), "total rent", total));
         } catch (IOException e) {
             e.printStackTrace();
         }

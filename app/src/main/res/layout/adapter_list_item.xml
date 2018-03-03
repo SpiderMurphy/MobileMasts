@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item"
+            type="com.bink.mobilemasts.models.ListItem" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:minHeight="@dimen/adapter_min_height"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--<ImageView
+            android:layout_width="@dimen/adapter_mast_icon_size"
+            android:layout_height="@dimen/adapter_mast_icon_size"
+            android:scaleType="center"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:src="@drawable/ic_settings_input_antenna_black_24dp"
+            android:tint="@color/colorAccentLight"/>-->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/adapter_title_text_size"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:text="@{ item.title }"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/adapter_subtitle_text_size"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:text='@{ item.subTitle }'/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

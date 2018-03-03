@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">Mobile Masts</string>
+    <string name="app_name">Mobile masts</string>
     <string name="action_settings">Settings</string>
+    <string name="rentals_desc">Top Rentals</string>
+    <string name="tenants_desc">Tenants</string>
+    <string name="property_name">Property</string>
+    <string name="lease_years">Amount</string>
 </resources>

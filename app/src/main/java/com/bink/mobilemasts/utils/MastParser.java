@@ -21,10 +21,14 @@ import java.util.Locale;
 
 public class MastParser {
     /**
-     *
+     * Gets a list of Mast from csv file
      *
      * @param reader
+     * data reader (StringReader, FileReader etc...)
+     *
      * @param comparator
+     * comparator to get a list sorted by custom criteria
+     *
      * @return
      */
     public static List<Mast> readFromCsv(Reader reader, Comparator<Mast> comparator) {
@@ -57,10 +61,14 @@ public class MastParser {
     }
 
     /**
-     *
+     * Gets Mast object from String vector reppresenting csv columns
      *
      * @param buffer
+     * csv columns values
+     *
      * @param header
+     * csv column header
+     *
      * @return
      */
     public static Mast getFrom(String[] buffer, List<String> header){
@@ -89,6 +97,7 @@ public class MastParser {
         mast.setPropertyAddress3(buffer[header.indexOf("Property Address [3]")]);
         mast.setPropertyAddress4(buffer[header.indexOf("Property Address [4]")]);
         mast.setUnitName(buffer[header.indexOf("Unit Name")]);
+        mast.setTenantName(buffer[header.indexOf("Tenant Name")]);
         mast.setCurrentRent(currentRent == null ? 0.0 : currentRent);
         mast.setLeaseYears(leaseYears == null ? 0 : leaseYears);
         mast.setLeaseStartDate(leaseStartDate);

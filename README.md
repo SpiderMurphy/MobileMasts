@@ -31,7 +31,22 @@ List these rentals with the date format of: DD/MM/YYYY.
 
 <b>Solutions : </b>
 
+1) OpenCsv 4 was used to read the csv file provided.Couldn't use a proper data's deserialization because of Android SDK doesn't implement Java Beans Introspector, and CsvToBean requires beans to deserialize data into POJO.The class responsibile to that is MastParser (100% Test Covered).
 
+  A list reppresentation was used to display data (according to material guidelines).
+
+2) Not done.
+
+3) Done but not displaying.
+
+4) In the second tab there's a list containing information about the top 5 tenants and the sum of their masts (an Hashmap was used to collect the data).
+
+5) Not done.
+
+
+<b>UnitTest : </b>
+
+Android components hasn't been tested (Activity, Adapter), however a Presenter has been provided to test recycler view Adapter's behaviors without running an instrumented test.
 
 <b>Screenshots</b>
 

@@ -1,7 +1,11 @@
 package com.bink.mobilemasts.presenters;
 
+import android.support.annotation.NonNull;
+
 import com.bink.mobilemasts.models.ListItem;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,6 +37,25 @@ public class ItemPresenter {
      */
     public void add(ListItem item){
         mItems.add(item);
+    }
+
+    /**
+     * Gets list item by index
+     *
+     * @param i
+     * @return
+     */
+    public ListItem get(int i){
+        return mItems.get(i);
+    }
+
+    /**
+     * Sorts list item lists by comparator criteria
+     *
+     * @param comparator
+     */
+    public void sort(@NonNull Comparator<ListItem> comparator){
+        Collections.sort(mItems, comparator);
     }
 
     /**

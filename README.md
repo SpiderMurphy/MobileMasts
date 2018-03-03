@@ -7,7 +7,12 @@ Dataset source: https://data.gov.uk/dataset/mobile-phone- masts
 Contains public sector information licensed under the Open Government Licence v3.0.
 
 <b>Dataset description:</b>
+
 This dataset provides information on mobile phone masts located on Leeds City Council
+
+
+
+<b>Screenshots</b>
 
 <p float="left">
   <img src="https://user-images.githubusercontent.com/13555265/36933554-5296ae34-1edb-11e8-8315-84b8c6d6d32c.png" width="400" hspace="40" />
